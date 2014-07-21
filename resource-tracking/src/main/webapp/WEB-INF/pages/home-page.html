@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="hero-unit">
+        <h1>OBT Request Management System</h1>
+
+        <p>This system is used to maintain Resource request from clients. </p>
+    </div>
+    <div class="row">
+        <div class="span4">
+            <h2>Resource Request Management</h2>
+
+            <p>Manage(add/delete/update/search) every request for resources from client. </p>
+
+            <p><a class="btn btn-primary btn-large" th:href="@{/ResourceDetails}">Go &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Resource Profile Management</h2>
+
+            <p>Manage(add/update) resource profiles available for the OBT request from client. </p>
+
+            <p><a class="btn btn-primary btn-large" th:href="@{~/profile/AddResourceProfile}">Go &raquo;</a></p>
+        </div>
+        <div class="span4">
+            <h2>Search Profile Management</h2>
+
+            <p>Search profiles associated with OBT request and view their corresponding resumes.</p>
+
+            <p><a class="btn btn-primary btn-large"
+                  th:href="@{~/search-profile/SearchProfile/EnterObtId}">Go &raquo;</a></p>
+        </div>
+    </div>
+
+
+    <footer>
+        <div id="footerText" class="span12"><p class="pull-right">&copy; Cognizant 2014</p>
+
+            <p class="pull-left"> developers:<a href="#">Hari</a> |
+                <a href="#">Arthi</a> |
+                <a href="#">Sukanya</a></p>
+        </div>
+
+    </footer>
+
+</div>
+</body>
+</html>

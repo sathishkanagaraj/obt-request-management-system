@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resource Tracking</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container-fluid pull-left" th:fragment="home-fragment">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Resource Management</li>
+                    <li class="active"><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                    <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                    <li><a th:href="@{/search}">Search Request</a></li>
+                    <li><a th:href="@{/delete}">Delete Request</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

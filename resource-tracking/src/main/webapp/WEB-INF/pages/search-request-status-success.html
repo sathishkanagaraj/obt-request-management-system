@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Resource Management</li>
+                    <li class="active"><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                    <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                    <li><a th:href="@{/search}">Search Request</a></li>
+                    <li><a th:href="@{/delete}">Delete Request</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="span9 pull-right">
+
+            <table>
+                <tr><h1>Request Status of Request <b th:text="${request_status_view.obt_id}"></b></h1></tr>
+                <tr>
+                    <td>Status Update Date</td>
+                    <td th:text="${request_status_view.update_date}"></td>
+                </tr>
+                <tr>
+                    <td>Portfolio Proposed</td>
+                    <td th:text="${request_status_view.portfolio_proposed}"></td>
+                </tr>
+                <tr>
+                    <td>Total Number of Profiles Proposed</td>
+                    <td th:text="${request_status_view.total_no_of_profiles_proposed}"></td>
+                </tr>
+                <tr>
+                    <td>Number of Profiles Interviewed</td>
+                    <td th:text="${request_status_view.no_of_profiles_interviewed}"></td>
+                </tr>
+                <tr>
+                    <td>Proposed Resources</td>
+                    <td th:text="${request_status_view.proposed_resources}"></td>
+                </tr>
+                <tr>
+                    <td>Remarks</td>
+                    <td th:text="${request_status_view.remarks}"></td>
+                </tr>
+                <tr>
+                    <td><a th:href="@{/search_project_details}">Go Back to Project Details</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

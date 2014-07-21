@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+</head>
+<body>
+<div class="pull-right"><a class="btn btn-large btn-navbar" th:href="@{/ResourceTracking}"><h3>HOME</h3></a></div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Resource Management</li>
+                    <li><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                    <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                    <li class="active"><a th:href="@{/search}">Search Request</a></li>
+                    <li><a th:href="@{/delete}">Delete Request</a></li>
+                </ul>
+            </div>
+        </div>
+        <h1 align="center">Resource Request Management</h1>
+
+        <div class="span9 pull-right">
+            <h2 align="center">Project Details of Id: <b th:text="${project_details_view.obtid}"></b></h2>
+            <table align="center" border="2" cellspacing="20" cellpadding="20">
+                <tr>
+                    <td><b>Project Name</b></td>
+                    <td><p th:text="${project_details_view.pname}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Practice</b></td>
+                    <td><p th:text="${project_details_view.practice}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Project Description</b></td>
+                    <td><p th:text="${project_details_view.pdescription}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Job Description</b></td>
+                    <td><p th:text="${project_details_view.jdescription}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Portfolio</b></td>
+                    <td><p th:text="${project_details_view.portfolio}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Location</b></td>
+                    <td><p th:text="${project_details_view.location}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Start Date</b></td>
+                    <td><p th:text="${project_details_view.startDate}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>End Date</b></td>
+                    <td><p th:text="${project_details_view.endDate}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Duration</b></td>
+                    <td><p th:text="${project_details_view.duration}"></p></td>
+                </tr>
+                <tr>
+                    <td><b>Dutch</b></td>
+                    <td><p th:text="${project_details_view.dutch}"></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a class="btn btn-large btn-primary"
+                           th:href="@{/search_resource_details(obtid=${project_details_view.getObtid()})}">Go Back to
+                        Resource Details</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

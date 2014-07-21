@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Resource Management-Resource Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-responsive.css}"
+          href="/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/msg-color.css}" href="/css/msg-color.css"/>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+</head>
+<body OnLoad="document.myform.id1.focus();">
+<form action="#" th:action="@{/ProjectDetails}" th:name="myform" th:object="${resourceDetailsView}">
+    <input type="hidden" th:field="*{update}" th:value="${resourceDetailsView.update}"/>
+
+    <div class="pull-right"><a class="btn btn-large btn-navbar" th:href="@{/ResourceTracking}"><h3>HOME</h3></a></div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Resource Management</li>
+                        <li class="active"><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                        <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                        <li><a th:href="@{/search}">Search Request</a></li>
+                        <li><a th:href="@{/delete}">Delete Request</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <h1 align="center">Resource Request Management</h1>
+
+            <div class="span9 pull-right">
+                <h3 align="center" th:text="${success_msg}" th:class="success"></h3>
+
+                <h2 align="center" class="text-center">Resource Details</h2>
+                <table align="center">
+                    <tr>
+                        <td>OBT ID</td>
+                        <td><input type="text" th:name="obtid" th:id="id1" th:field="*{obtid}"
+                                   th:value="${resourceDetailsView.obtid}"/></td>
+                        <td th:if="${#fields.hasErrors('obtid')}" th:text="${obt_error}" th:errors="*{obtid}"
+                            th:class="error">Incorrect Obt Id
+                        </td>
+                        <td><span th:text="${obtid_error}" th:class="error"></span></td>
+                    </tr>
+                    <tr>
+                        <td>RESOURCE TYPE</td>
+                        <td><label>
+                            <input type="text" th:name="type" th:field="*{type}"
+                                   th:value="${resourceDetailsView.type}"/>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('type')}" th:errors="*{type}" th:text="${type_error}"
+                            th:class="error">Incorrect Resource type
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RESOURCE ROLE</td>
+                        <td><label>
+                            <select th:name="role" th:field="*{role}" th:value="${resourceDetailsView.role}">
+                                <option value="">--Select--</option>
+                                <option value="Consultant SAP Package">Consultant SAP Package</option>
+                                <option value="Java Developer">Java Developer</option>
+                                <option value="Designer">Designer</option>
+                                <option value="Test Analysts">Test Analysts</option>
+                                <option value="11G - developer">11G - developer</option>
+                                <option value="DWH Developer">DWH Developer</option>
+                                <option value="Package Consultant">Package Consultant</option>
+                            </select>
+                        </label>
+                        </td>
+                        <td th:if="${#fields.hasErrors('role')}" th:errors="*{role}" th:class="error">Incorrect Resource
+                            role
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RESOURCE RESPONSIBILITY</td>
+                        <td><label>
+                            <textarea rows="4" cols="20" th:name="responsibility" th:field="*{responsibility}"
+                                      th:value="${resourceDetailsView.responsibility}"></textarea>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('responsibility')}" th:errors="*{responsibility}"
+                            th:class="error">Incorrect Resource responsibility
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>TECHNOLOGY</td>
+                        <td><label>
+                            <textarea rows="4" cols="20" th:name="technology" th:field="*{technology}"
+                                      th:value="${resourceDetailsView.technology}"></textarea>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('technology')}" th:errors="*{technology}" th:class="error">
+                            Incorrect Technology
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RESOURCE LEVEL</td>
+                        <td><label>
+                            <select th:name="level" th:field="*{level}" th:value="${resourceDetailsView.level}">
+                                <option value="">--Select--</option>
+                                <option value="Senior">Senior</option>
+                                <option value="Medior">Medior</option>
+                                <option value="Junior">Junior</option>
+                            </select>
+                        </label>
+                        </td>
+                        <td th:if="${#fields.hasErrors('level')}" th:errors="*{level}" th:class="error"
+                            th:value="${resourceDetailsView.level}">Incorrect Resource level
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>RECEIVED DATE</td>
+                        <td><input type="text" id="datepicker" th:name="rdate" th:field="*{rdate}"
+                                   th:value="${resourceDetailsView.rdate}" readonly="readonly"/></td>
+                        <td><p th:if="${#fields.hasErrors('rdate')}" th:errors="*{rdate}"
+                               th:class="error">Incorrect Date</p>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td><a class="btn btn-large btn-primary" th:href="@{/ResourceTracking}" onclick="return true">Cancel</a>
+                        </td>
+                        <td><input class="btn btn-large btn-primary" type="submit" value="Continue"/></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

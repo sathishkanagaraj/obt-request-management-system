@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <title>Update Resource Profile Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-responsive.css}"
+          href="/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/msg-color.css}" href="/css/msg-color.css"/>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker();
+            $("#datepicker1").datepicker();
+            $("#datepicker2").datepicker();
+        });
+    </script>
+</head>
+<body OnLoad="document.myform.datepicker.focus();">
+<form action="#" th:action="@{/UpdateResourceProfileDetails}" th:name="myform" method="post"
+      th:object="${addResourceProfileDetailsView}" enctype="multipart/form-data">
+    <div class="pull-right"><a class="btn btn-large btn-navbar" th:href="@{~/request/ResourceTracking}"><h3>HOME</h3>
+    </a></div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Resource Management</li>
+                        <li><a th:href="@{/AddResourceProfile}">Add Profile</a></li>
+                        <li class="active"><a th:href="@{/UpdateResourceProfile}">Update Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1 align="center">Resource Profile Management</h1>
+
+            <div class="span9 pull-right">
+                <h2 align="center">Profile Details</h2>
+                <table align="center">
+                    <tr>
+                        <td><input type="hidden" th:name="profile_id" th:field="*{profile_id}"/></td>
+                    </tr>
+                    <tr>
+                        <td>OBTID:</td>
+                        <td><input type="text" th:name="obtid" th:field="*{obtid}" readOnly="readOnly"/></td>
+                    </tr>
+                    <tr>
+                        <td>Associate- ID:</td>
+                        <td><input type="text" th:name="associate_id" th:field="*{associate_id}" readOnly="readOnly"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Profile-Shared-Date:</td>
+                        <td><input type="text" th:name="profile_shared_date" th:id="datepicker"
+                                   th:field="*{profile_shared_date}" readonly="readonly"/></td>
+                        <td th:if="${#fields.hasErrors('profile_shared_date')}" th:errors="*{profile_shared_date}"
+                            th:class="error">Incorrect Data
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Onsite POC Details:</td>
+                        <td><input type="text" th:name="onsite_poc_details" th:field="*{onsite_poc_details}"/></td>
+                        <td th:if="${#fields.hasErrors('onsite_poc_details')}" th:errors="*{onsite_poc_details}"
+                            th:class="error">Incorrect Data
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Intake-Date:</td>
+                        <td><input type="text" th:name="intake_date" id="datepicker1" th:field="*{intake_date}"
+                                   readonly="readonly"/></td>
+                        <td th:if="${#fields.hasErrors('intake_date')}" th:errors="*{intake_date}" th:class="error"
+                            th:text="${idate_error}">Incorrect Data
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Result-Date:</td>
+                        <td><input type="text" th:name="result_date" id="datepicker2" th:field="*{result_date}"
+                                   readonly="readonly"/></td>
+                        <td th:if="${#fields.hasErrors('result_date')}" th:errors="*{result_date}" th:class="error"
+                            th:text="${rdate_error}">Incorrect Data
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Result:</td>
+                        <td><input type="text" th:name="result" th:field="*{result}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Remarks:</td>
+                        <td><input type="text" th:name="remarks" th:field="*{remarks}"/></td>
+                    </tr>
+                    <tr>
+                        <td>File to upload:</td>
+                        <td><input type="file" th:name="file" th:field="*{file}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Resume:</td>
+                        <td><a th:href="@{/DownloadResume}">Click here to download Resume</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="btn btn-large btn-success" type="submit" th:value="submit"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

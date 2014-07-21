@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resource Management-Search Request</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/msg-color.css}" href="/css/msg-color.css"/>
+    <script src="/js/bootstrap.js"></script>
+</head>
+<body OnLoad="document.myform.id1.focus();">
+<form action="#" th:action="@{/search_resource_details}" th:name="myform" th:object="${resourceDetailsView}">
+    <div class="pull-right"><a class="btn btn-large btn-navbar" th:href="@{/ResourceTracking}"><h3>HOME</h3></a></div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Resource Management</li>
+                        <li><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                        <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                        <li class="active"><a th:href="@{/search}">Search Request</a></li>
+                        <li><a th:href="@{/delete}">Delete Request</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1 align="center">Resource Request Management</h1>
+
+            <div class="span9 pull-right">
+                <h2 align="center">Search Request </h2>
+                <table align="center">
+                    <tr>
+                        <td>Enter OBT id :</td>
+                        <td><input type="text" th:name="obtid" th:id="id1" th:field="*{obtid}"/></td>
+                        <td><span th:text="${obtid_error}" th:class="error"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="btn btn-large btn-primary" type="submit" value="Search"/></td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

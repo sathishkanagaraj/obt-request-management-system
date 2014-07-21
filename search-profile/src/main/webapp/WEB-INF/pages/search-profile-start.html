@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-responsive.css}"
+          href="/css/bootstrap-responsive.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile_details.css}" href="/css/profile_details.css"/>
+</head>
+<body OnLoad="document.myform.id1.focus();">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span9 pull-right">
+            <div class="pull-right"><a th:href="@{~/request/ResourceTracking}"><img th:src="@{/img/home-icon.jpg}"
+                                                                                    alt="Go to Home page" height="20"
+                                                                                    width="20"/></a></div>
+            <form action="#" th:name="myform" th:action="@{/SearchProfile}" method="POST"
+                  th:object="${addResourceProfileDetailsView}">
+                <br/><br/>
+
+                <h1 align="center">Search Resource Profile</h1>
+                <br/><br/>
+                <table align="center">
+                    <tr>
+                        <td>Enter the OBT Id</td>
+                        <td><label>
+                            <input type="text" th:name="obtid" th:id="id1"/>
+                        </label></td>
+                        <td><span th:text="${noprofile_error}" th:class="error"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="btn btn-large btn-primary" type="submit" th:value="submit"/></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

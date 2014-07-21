@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+    <title>Profile Management</title>
+</head>
+<body>
+<table th:fragment="home-fragment">
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Resource Management</li>
+                <li class="active"><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                <li><a th:href="@{/search}">Search Request</a></li>
+                <li><a th:href="@{/delete}">Delete Request</a></li>
+            </ul>
+        </div>
+    </div>
+    <th>Profile Management</th>
+    <tr>
+        <td><a th:href="@{/AddResourceProfile}">Add Profile</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/UpdateResourceProfile}">Update Profile</a></td>
+    </tr>
+</table>
+</body>
+</html>

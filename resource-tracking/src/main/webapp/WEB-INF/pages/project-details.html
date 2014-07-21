@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resource Management-Project Details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/msg-color.css}" href="/css/msg-color.css"/>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+
+    <script>
+        function cal_duration() {
+            var Sdate = new Date(document.getElementById("datepicker").value);
+            var Edate = new Date(document.getElementById("datepicker1").value);
+            var ms = Edate.getTime() - Sdate.getTime();
+            var month = ms / (1000 * 60 * 60 * 30 * 24);
+            var duration = Math.round((month * 100) / 100) + " Months";
+            document.getElementById("duration").value = duration;
+        }
+        $(document).ready(function () {
+            $("#datepicker").datepicker();
+            $("#datepicker1").datepicker();
+        });
+    </script>
+</head>
+<body OnLoad="document.myform.id1.focus();">
+<form action="#" th:action="@{/Success}" th:name="myform" th:object="${projectDetailsView}" method="post">
+    <div class="pull-right"><a class="btn btn-large btn-navbar" th:href="@{/ResourceTracking}"><h3>HOME</h3></a></div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Resource Management</li>
+                        <li><a th:href="@{/ResourceDetails}">Add Request</a></li>
+                        <li><a th:href="@{/updaterequest}">Update Request</a></li>
+                        <li><a th:href="@{/search}">Search Request</a></li>
+                        <li><a th:href="@{/delete}">Delete Request</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h1 align="center">Resource Request Management</h1>
+
+            <div class="span9 pull-right">
+                <h2 align="center">Project Details</h2>
+                <table align="center">
+                    <tr>
+                        <td><input type="hidden" th:value="${resourceDetailsView}"/></td>
+                    </tr>
+                    <tr>
+                        <td>OBT ID</td>
+                        <td><label>
+                            <input type="text" th:name="obtid" th:field="*{obtid}"
+                                   th:value="${projectDetailsView.obtid}" readonly="readonly"/>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td>PROJECT NAME</td>
+                        <td><label>
+                            <input type="text" th:name="pname" th:id="id1" th:field="*{pname}"/>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}" th:class="error">Incorrect</td>
+                    </tr>
+                    <tr>
+                        <td>PRACTICE</td>
+                        <td><label>
+                            <select th:name="practice" th:field="*{practice}">
+                                <option value="">--Select--</option>
+                                <option value="SAP">SAP</option>
+                                <option value="BANKING">Banking</option>
+                                <option value="TESTING">Testing</option>
+                            </select>
+                        </label>
+                        </td>
+                        <td th:if="${#fields.hasErrors('practice')}" th:errors="*{practice}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PROJECT DESCRIPTION</td>
+                        <td><label>
+                            <textarea rows="4" cols="20" th:name="pdescription" th:field="*{pdescription}"></textarea>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('pdescription')}" th:errors="*{pdescription}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>JOB DESCRIPTION</td>
+                        <td><label>
+                            <textarea rows="4" cols="20" th:name="jdescription" th:field="*{jdescription}"></textarea>
+                        </label></td>
+                        <td th:if="${#fields.hasErrors('jdescription')}" th:errors="*{jdescription}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>PORTFOLIO</td>
+                        <td><label>
+                            <select th:name="portfolio" th:field="*{portfolio}">
+                                <option value="">--Select--</option>
+                                <option value="PAY AND SAVINGS">Pay and Savings</option>
+                                <option value="DISTRIBUTION">Distribution</option>
+                                <option value="FINANCIEREN">Financieren</option>
+                                <option value="ORGANIZATION">Organization</option>
+                            </select>
+                        </label>
+                        </td>
+                        <td th:if="${#fields.hasErrors('portfolio')}" th:errors="*{portfolio}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>LOCATION</td>
+                        <td><input type="radio" th:name="location" th:value="Offshore" th:field="*{location}"/>Offshore
+                        </td>
+                        <td><input type="radio" th:name="location" th:value="Onsite" th:field="*{location}"/>
+                            Onsite
+                        </td>
+                        <td th:if="${#fields.hasErrors('location')}" th:errors="*{location}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>START DATE</td>
+                        <td><input type="text" id="datepicker" th:name="sdate" th:field="*{StartDate}"
+                                   readonly="readonly"/></td>
+                        <td th:if="${#fields.hasErrors('StartDate')}" th:errors="*{StartDate}"
+                            th:class="error">Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>END DATE</td>
+                        <td><input type="text" id="datepicker1" th:name="edate" th:field="*{EndDate}"
+                                   readonly="readonly"/></td>
+                        <td th:if="${#fields.hasErrors('EndDate')}" th:errors="*{EndDate}"
+                            th:class="error">Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DURATION</td>
+                        <td><input type="text" id="duration" th:name="duration" th:field="*{duration}"
+                                   onClick="cal_duration();"/></td>
+                        <td th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}" th:class="error">
+                            Incorrect
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DUTCH</td>
+                        <td><input type="radio" th:name="dutch" th:value="Yes" th:field="*{dutch}"/>yes</td>
+                        <td>
+                            <input type="radio" th:name="dutch" th:value="No" th:field="*{dutch}"/>no
+                        </td>
+                        <td th:if="${#fields.hasErrors('dutch')}" th:errors="*{pname}" th:class="error">Incorrect</td>
+                    </tr>
+                    <tr>
+                        <td><a class="btn btn-large btn-primary" th:href="@{/ResourceDetailsBack}">Back</a></td>
+                        <td><input class="btn btn-large btn-success" type="submit" value="SUBMIT"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

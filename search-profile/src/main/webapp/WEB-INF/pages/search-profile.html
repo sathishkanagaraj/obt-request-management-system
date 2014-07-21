@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-responsive.css}"
+          href="/css/bootstrap-responsive.css"/>
+</head>
+<body>
+<form action="#" th:action="@{/SearchProfile}" method="POST" th:object="${addResourceProfileDetailsView}">
+    <div class="pull-right"><a th:href="@{~/request/ResourceTracking}"><img th:src="@{/img/home-icon.jpg}" height="0.5"
+                                                                            width="0.5"/></a></div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span5">
+                <h1 align="center">Search Resource Profile</h1>
+                <table>
+                    <tr>
+                        <td>Enter the OBT Id</td>
+                        <td><label>
+                            <input type="text" th:name="obtid"/>
+                        </label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input class="btn btn-large btn-primary" type="submit" th:value="submit"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span9 pull-right">
+            <table align="center" cellspacing="10" cellpadding="10" border="2" border-color="orange" th:class="sr">
+                <h2 cellspacing="100" align="center">Profile Details "<b
+                        th:text="${profileDetailsList.get(0).getObtid()}"></b>"</h2>
+                <tr>
+                    <th>Associate Id</th>
+                    <th>Intake Date</th>
+                    <th>Result Date</th>
+                    <th>Result</th>
+                    <th>Remarks</th>
+                    <th>Profile Shared Date</th>
+                </tr>
+                <ul th:each="associateid : ${profileDetailsList}">
+                    <tr>
+                        <td>
+                            <a th:href="@{/SearchProfile/getProfileResume/(obtid=${associateid.obtid},associateid=${associateid.associate_id})}">
+                                <p th:text="${associateid.getAssociate_id()}"></p></a></td>
+                        <!--<td><p th:text="${associateid.getOnsite_poc_details()}"></p></td>-->
+                        <td><p th:text="${associateid.getIntake_date()}"></p></td>
+                        <td><p th:text="${associateid.getResult_date()}"></p>
+
+                            <p th:text="${remarks}"></p></td>
+                        <td><p th:text="${associateid.getResult()}"></p>
+
+                            <p th:text="${remarks}"></p></td>
+                        <td><p th:text="${associateid.getRemarks()}"></p>
+
+                            <p th:text="${remarks}"></p></td>
+                        <td><p th:text="${associateid.getProfile_shared_date()}"></p></td>
+                    </tr>
+                </ul>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

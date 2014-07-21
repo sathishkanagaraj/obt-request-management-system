@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence>
+    <persistence-unit name="updatejpa" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>com.cts.internal.project.resource_tracking.data.ProfileManagementDO</class>
+
+        <properties>
+            <property name="url" value="jdbc:mysql://localhost/resource_tracking"/>
+            <property name="driver" value="com.mysql.jdbc.Driver"/>
+            <property name="UserName" value="root"/>
+            <property name="Password" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
