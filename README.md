@@ -1,7 +1,7 @@
 obt-request-management-system
 =============================
 
-System which automated resource request processing in our organization. Developed by Arthi, Hari and Sukanya.
+System which automated resource request processing in our organization. Developed by Arthi, Hari,Sukanya lead by @SathishKanagaraj.
 
 Version-1.0.0(stable)
 ===============
